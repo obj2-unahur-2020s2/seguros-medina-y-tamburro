@@ -10,4 +10,4 @@ listOf(1, 8, 10).average()
 
 val antiguedad = LocalDate.now().year - 1990
 
-print (antiguedad)
+print (antiguedad + 2)
