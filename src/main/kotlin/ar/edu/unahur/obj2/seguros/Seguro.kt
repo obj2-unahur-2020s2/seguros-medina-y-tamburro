@@ -20,7 +20,7 @@ object RoboHurto: Seguro {
 }
 
 object TodoRiesgo: Seguro {
-  override fun costoPara(vehiculo: Vehiculo) =
+  override fun costoPara(vehiculo: Vehiculo) : Double =
     vehiculo.valor * 0.07
   override fun puedeSerContratadoPor(vehiculo: Vehiculo) =
     vehiculo.cumpleRequisitosTR()

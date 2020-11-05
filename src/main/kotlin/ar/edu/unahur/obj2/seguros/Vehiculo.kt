@@ -28,8 +28,7 @@ abstract class Vehiculo(val valor: Int, val anioFabricacion: Int, val seguros: M
   abstract fun antiguedadPermitidaRH() : Int
   open fun cumpleRequisitosTR() = false
 
-//  fun costoTotalSeguros()=
-//    seguros.sumBy { this.costoDe(it) } //VER QUE ONDA
+  fun costoTotalSeguros()= seguros.sumByDouble{ this.costoDe(it) }
 }
 
 class Auto (valor: Int, anioFabricacion: Int, seguros: MutableList<Seguro>) :
@@ -38,7 +37,7 @@ class Auto (valor: Int, anioFabricacion: Int, seguros: MutableList<Seguro>) :
     seguro.puedeSerContratadoPor(this)
 
   override fun costoContraterceros() =
-    valor * 0.1
+    valor * 0.01
   override fun costoRoboHurto() =
     if (anioFabricacion >= 1995) valor * 0.03 else valor * 0.05
 
@@ -57,7 +56,8 @@ class Camion(valor: Int, anioFabricacion: Int, seguros: MutableList<Seguro>) :
     seguro.puedeSerContratadoPor(this)
 
   override fun costoContraterceros() =
-    if (antiguedad() > 10) valor * 0.2 else valor * 0.15
+    if (antiguedad() > 10) valor * 0.02 else valor * 0.015
+
   override fun antiguedadPermitidaRH() = 10
 }
 
@@ -72,5 +72,6 @@ class Taxi(valor: Int, anioFabricacion: Int , seguros: MutableList<Seguro> , tie
 
   fun recargoContraterceros() =
     if (tieneInfracciones) 1000 else 0
+
   override fun antiguedadPermitidaRH() = 12
 }
